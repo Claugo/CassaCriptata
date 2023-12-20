@@ -256,14 +256,14 @@ class Finestra1(Tk):  # Cambiato da tk.Tk a Tk
         self.geometry('500x300')
         self.configure(bg=fondo_finestra1)
         global cartella
-        cartella = 'C:\DCP'
+        cartella = 'C:\DCP\Dropbox/'
 
         l1 = Label(self, text='CASSAFORTE 3675b', bg=fondo_finestra1, fg='black', font='arial 22 bold')
         l1.place(x=90, y=200)
-        b1 = Button(self, text="Inserisci Documento", command=self.apri_finestra2)
-        b1.place(x=100, y=100)
-        b1 = Button(self, text="Apri Documento", command=self.apri_finestra3)
-        b1.place(x=300, y=100)
+        b1 = Button(self, text="Inserisci Documento",font='arial 12', command=self.apri_finestra2)
+        b1.place(x=80, y=100)
+        b1 = Button(self, text="Apri Documento", font='arial 12',command=self.apri_finestra3)
+        b1.place(x=280, y=100)
 
     def apri_finestra2(self):
         finestra2 = Finestra2(self)
@@ -285,11 +285,11 @@ class Finestra2(Toplevel):  # Cambiato da tk.Toplevel a Toplevel
         global tw2
         global be1
         bl2 = Label(self,text='Salva Documento Con "nome.txt" ', bg=fondo_finestra2,font='arial 14')
-        bl2.place(x=10, y=50)
+        bl2.place(x=10, y=40)
         bb1=Button(self,width=5,text='Salva',bg='#CAFF70',command=salva_documento)
-        bb1.place(x=330,y=73)
-        be1=Entry(self,width=50,bg='yellow',justify='center')
-        be1.place(x=10,y=79)
+        bb1.place(x=300,y=70)
+        be1=Entry(self,width=25,bg='yellow',justify='center',font='arial 14')
+        be1.place(x=10,y=69)
         tw2 = Text(self, height=30, width=72, wrap=WORD,bg='beige', fg='black', cursor='arrow')
         tw2.place(x=10, y=100)
 
@@ -315,10 +315,10 @@ class Finestra3(Toplevel):  # Cambiato da tk.Toplevel a Toplevel
         popola_combobox_con_file()
         combobox.bind("<<ComboboxSelected>>", apri_file_selezionato)
         al1 = Label(self,text='Carica il file', bg=fondo_finestra3,font='arial 14')
-        al1.place(x=10, y=5)
+        al1.place(x=10, y=20)
         al2 = Label(self,text='Data Inserimento File', bg=fondo_finestra3,font='arial 14')
         al2.place(x=10, y=110)
-        ae1=Entry(self,width=50,bg='yellow',justify='center')
+        ae1=Entry(self,width=40,bg='yellow',justify='center',font='arial 12')
         ae1.place(x=10,y=140)
         tw1 = Text(self, height=25, width=72, wrap=WORD,bg='beige', fg='black', cursor='arrow')
         tw1.place(x=10, y=190)
