@@ -176,6 +176,21 @@ def salva_documento():
     nd=nextprime(p+randint(1,3**100))
     nd2=nextprime(q+randint(1,3**100))
     n = nd*nd2
+    #******************* controllo di fattorizzazione
+    chiave = 797623877234873371056847296053**18
+    a=n%chiave
+    b=n-a
+    for i in range(10):
+        r=gcd(a,b)
+        if r!=1:
+            break
+        else:
+            a=a+chiave
+            b=b-chiave
+    if r==1:    
+        messagebox.showerror('Attenzione', 'Test non superato: Riprovare')
+        return
+    #******************* fine controllo    
     start1=str(nd)
     start2=len(start1)
     start=int(start1[start2-5]+start1[start2-4])
