@@ -46,8 +46,29 @@ if verify_password(input_password, hashed_password):
     pass
 else:
     messagebox.showerror("Errore", "La password inserita è errata.")
-    exit()
+    quit()
 
+apri_dati = simpledialog.askstring("USB", 'Inserisci la porta USB se diversa da D')
+if not apri_dati:
+    apri_dati = 'd'
+
+file_path = os.path.join(apri_dati + ':', 'dati_cassaforte.txt')
+
+try:
+    with open(file_path, 'r') as leggif:
+        leggi1 = leggif.readline().strip()
+        leggi2 = leggif.readline().strip()
+        leggi3 = leggif.readline().strip()
+        leggi4 = leggif.readline().strip()
+        leggi5 = leggif.readline().strip()
+        leggi6 = leggif.readline().strip()
+        leggi7 = leggif.readline().strip()
+        leggi7 = leggi7.strip()
+except FileNotFoundError:
+    messagebox.showerror("Errore", "Dati non trovati")
+    quit()
+
+titolo = f'Cassaforte {leggi7}Bit'
 
 fondo_finestra1 = '#007FFF'
 fondo_finestra2 = '#3D9140'
@@ -80,7 +101,7 @@ def apri_file_selezionato(event):
             leggi.close()
             n_semiprimo=n_semiprimo.strip()
             testo_criptato=testo_criptato.strip()
-            chiave = 797623877234873371056847296053**18
+            chiave = int(leggi1)**int(leggi2)
             n_semiprimo=int(n_semiprimo)
             a = n_semiprimo%chiave
             b=n_semiprimo-a
@@ -171,13 +192,13 @@ def salva_documento():
         return
     T = int(time.time())
     seed(T)
-    p = (797623877234873371056847296053**16+3**50)
-    q = (797623877234873371056847296053**21+2**50)
-    nd=nextprime(p+randint(1,3**100))
-    nd2=nextprime(q+randint(1,3**100))
+    p = (int(leggi1)**int(leggi3))
+    q = (int(leggi1)**int(leggi4))
+    nd=nextprime(p+randint(1,int(leggi5)*2**int(leggi6)))
+    nd2=nextprime(q+randint(1,int(leggi5)*2**int(leggi6)))
     n = nd*nd2
     #******************* controllo di fattorizzazione
-    chiave = 797623877234873371056847296053**18
+    chiave = int(leggi1)**int(leggi2)
     a=n%chiave
     b=n-a
     for i in range(10):
@@ -251,7 +272,7 @@ def salva_documento():
         # Gestisci l'eccezione se il file non viene trovato
         ora = time.strftime('%a, %d %b %y %H:%M:%S', time.localtime())
         scrivi = open(cartella+'/'+nome_file, 'w')
-        scrivi.write('File creato '+str(ora)+' S3675'+'\n')
+        scrivi.write('File creato '+str(ora)+leggi7+'\n')
         scrivi.write(str(n)+'\n')
         scrivi.write(tcript+'\n')
         scrivi.close()
@@ -272,8 +293,8 @@ class Finestra1(Tk):  # Cambiato da tk.Tk a Tk
         self.configure(bg=fondo_finestra1)
         global cartella
         cartella = 'C:\DCP\Dropbox/'
-
-        l1 = Label(self, text='CASSAFORTE 3675b', bg=fondo_finestra1, fg='black', font='arial 22 bold')
+        
+        l1 = Label(self, text=titolo, bg=fondo_finestra1, fg='black', font='arial 22 bold')
         l1.place(x=90, y=200)
         b1 = Button(self, text="Inserisci Documento",font='arial 12', command=self.apri_finestra2)
         b1.place(x=80, y=100)
