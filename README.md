@@ -10,22 +10,11 @@ I dati memorizzati invece, sono all'interno del programma, impostati su "C:\DCP\
 Per quanto mi riguarda l'ho impostato così perchè su qualsiasi computer io usi ho la possibilità di leggere i file memorizzati e poi perchè avere un cloud tipo dropbox mi garantisce che se il mio computer si bloccasse, per un qualsiasi motivo,
 o qualcuno cancellasse i miei file, li potrei sempre recuperare da dropbox. Naturalmente di cloud ce ne sono altri e vi basterà mettere il vostro.
 Nel caso il programma venisse cancellato o hakerato, con i dati della chiavetta riuscirete comunque a recuperare tutti i vostri file. Questo naturalmente utilizzando un altro programma non ancora compilato e tenuto in un luogo sicuro.
-Il file dati er la cassaforte vine memorizzato quanto segue:
-Base
-chiave
-p
-q
-aumenta
-campo
-bit
+
+Il file dati per la cassaforte viene memorizzato come segue:
+Base, chiave, p, q, aumenta, campo, bit.
 
 L'algoritmo GC57:
-chiave(base^chiave)
-p=nextprime(base^p+(aumenta*2^campo))
-q=nextprime(base^q+(aumenta*2^campo))
-n=p*q
-a=n Mod(chiave)
-b=n-a
-gcd(a,b)
+chiave(base^chiave), p=nextprime(base^p+Rnd(aumenta * 2^campo))), q=nextprime(base^q+Rnd((aumenta * 2^campo))), n=p*q, a=n Mod(chiave), b=n-a, gcd(a,b).
 
 Qualsiasi numero esca dal calcolo Random di p e q, viene fattorizzato senza nessuna implementazione dalla chiave
