@@ -1,7 +1,7 @@
 # CassaCriptata
 Il programma CassaCriptata è una cassaforte che usa l'algoritmo GC57 a difesa dei nostri dati.
 Come funziona: Innanzi tutto dovremo creare una chiave con il programma TestCampo il quale ci fornirà un file dati che verrà memorizzato su di una chiavetta USB.
-I dati di questo file son importantissimi, in quanto la loro perdita significherebbe non riuscire più a decodificare i nostri file. Per questo motivo devono essere tunuti al sicuro
+I dati di questo file sono importantissimi in quanto la loro perdita significherebbe non riuscire più a decodificare i nostri file. Per questo motivo devono essere tenuti al sicuro
 in una copia lontano dal computer. Questo metodo di tenere i dati sulla chiavetta è per fornire al programma una doppia serratura. La prima serratura è la password che dovrà essere bella robusta, e la seconda serratura
 sarà appunto la chiavetta, che senza di essa i dati non potranno essere decifrati.
 La scelta della grandezza in Bit, come spiegato nel programma TestCampo, dipende dalla nostra necessità di protezione. Naturalmente con più saranno alti questi Bit, con più avremo un codice inviolabile.
